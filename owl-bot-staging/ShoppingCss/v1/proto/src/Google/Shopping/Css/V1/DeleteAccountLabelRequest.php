@@ -26,6 +26,7 @@ class DeleteAccountLabelRequest extends \Google\Protobuf\Internal\Message
     /**
      * @param string $name Required. The name of the label to delete.
      *                     Format:  accounts/{account}/labels/{label}
+     *                     Please see {@see AccountLabelsServiceClient::accountLabelName()} for help formatting this field.
      *
      * @return \Google\Shopping\Css\V1\DeleteAccountLabelRequest
      *

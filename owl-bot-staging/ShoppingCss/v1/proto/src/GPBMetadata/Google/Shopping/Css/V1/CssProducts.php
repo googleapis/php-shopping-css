@@ -22,26 +22,26 @@ class CssProducts
         \GPBMetadata\Google\Shopping\Type\Types::initOnce();
         $pool->internalAddGeneratedFile(
             '
-´
-)google/shopping/css/v1/css_products.protogoogle.shopping.css.v1google/api/client.protogoogle/api/field_behavior.protogoogle/api/resource.proto/google/shopping/css/v1/css_product_common.proto google/shopping/type/types.proto"L
-GetCssProductRequest4
-name (	B&‚A˙A
-css.googleapis.com/CssProduct"∞
+£
+)google/shopping/css/v1/css_products.protogoogle.shopping.css.v1google/api/client.protogoogle/api/field_behavior.protogoogle/api/resource.proto/google/shopping/css/v1/css_product_common.proto google/shopping/type/types.proto"K
+GetCssProductRequest3
+name (	B%‡A˙A
+css.googleapis.com/CssProduct"™
 
 CssProduct
-name (	
-raw_provided_id (	B‚A
-content_language (	B‚A
+name (	
+raw_provided_id (	B‡A
+content_language (	B‡A
 
-feed_label (	B‚A<
+feed_label (	B‡A;
 
-attributes (2".google.shopping.css.v1.AttributesB‚AF
-custom_attributes (2%.google.shopping.type.CustomAttributeB‚AJ
-css_product_status (2(.google.shopping.css.v1.CssProductStatusB‚A:iÍAf
+attributes (2".google.shopping.css.v1.AttributesB‡AE
+custom_attributes (2%.google.shopping.type.CustomAttributeB‡AI
+css_product_status (2(.google.shopping.css.v1.CssProductStatusB‡A:iÍAf
 css.googleapis.com/CssProduct,accounts/{account}/cssProducts/{css_product}*cssProducts2
-cssProduct"w
-ListCssProductsRequest6
-parent (	B&‚A˙Acss.googleapis.com/CssProduct
+cssProduct"v
+ListCssProductsRequest5
+parent (	B%‡A˙Acss.googleapis.com/CssProduct
 	page_size (
 
 page_token (	"l

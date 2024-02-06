@@ -31,19 +31,20 @@ use Google\Shopping\Css\V1\CreateAccountLabelRequest;
 /**
  * Creates a new label, not assigned to any account.
  *
- * This sample has been automatically generated and should be regarded as a code
- * template only. It will require modifications to work:
- *  - It may require correct/in-range values for request initialization.
- *  - It may require specifying regional endpoints when creating the service client,
- *    please see the apiEndpoint client configuration option for more details.
+ * @param string $formattedParent The parent account.
+ *                                Format: accounts/{account}
+ *                                Please see {@see AccountLabelsServiceClient::accountName()} for help formatting this field.
  */
-function create_account_label_sample(): void
+function create_account_label_sample(string $formattedParent): void
 {
     // Create a client.
     $accountLabelsServiceClient = new AccountLabelsServiceClient();
 
     // Prepare the request message.
-    $request = new CreateAccountLabelRequest();
+    $accountLabel = new AccountLabel();
+    $request = (new CreateAccountLabelRequest())
+        ->setParent($formattedParent)
+        ->setAccountLabel($accountLabel);
 
     // Call the API and handle any network failures.
     try {
@@ -53,5 +54,21 @@ function create_account_label_sample(): void
     } catch (ApiException $ex) {
         printf('Call failed with message: %s' . PHP_EOL, $ex->getMessage());
     }
+}
+
+/**
+ * Helper to execute the sample.
+ *
+ * This sample has been automatically generated and should be regarded as a code
+ * template only. It will require modifications to work:
+ *  - It may require correct/in-range values for request initialization.
+ *  - It may require specifying regional endpoints when creating the service client,
+ *    please see the apiEndpoint client configuration option for more details.
+ */
+function callSample(): void
+{
+    $formattedParent = AccountLabelsServiceClient::accountName('[ACCOUNT]');
+
+    create_account_label_sample($formattedParent);
 }
 // [END css_v1_generated_AccountLabelsService_CreateAccountLabel_sync]

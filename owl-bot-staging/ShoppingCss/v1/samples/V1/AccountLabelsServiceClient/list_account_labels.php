@@ -32,19 +32,18 @@ use Google\Shopping\Css\V1\ListAccountLabelsRequest;
 /**
  * Lists the labels assigned to an account.
  *
- * This sample has been automatically generated and should be regarded as a code
- * template only. It will require modifications to work:
- *  - It may require correct/in-range values for request initialization.
- *  - It may require specifying regional endpoints when creating the service client,
- *    please see the apiEndpoint client configuration option for more details.
+ * @param string $formattedParent The parent account.
+ *                                Format: accounts/{account}
+ *                                Please see {@see AccountLabelsServiceClient::accountName()} for help formatting this field.
  */
-function list_account_labels_sample(): void
+function list_account_labels_sample(string $formattedParent): void
 {
     // Create a client.
     $accountLabelsServiceClient = new AccountLabelsServiceClient();
 
     // Prepare the request message.
-    $request = new ListAccountLabelsRequest();
+    $request = (new ListAccountLabelsRequest())
+        ->setParent($formattedParent);
 
     // Call the API and handle any network failures.
     try {
@@ -58,5 +57,21 @@ function list_account_labels_sample(): void
     } catch (ApiException $ex) {
         printf('Call failed with message: %s' . PHP_EOL, $ex->getMessage());
     }
+}
+
+/**
+ * Helper to execute the sample.
+ *
+ * This sample has been automatically generated and should be regarded as a code
+ * template only. It will require modifications to work:
+ *  - It may require correct/in-range values for request initialization.
+ *  - It may require specifying regional endpoints when creating the service client,
+ *    please see the apiEndpoint client configuration option for more details.
+ */
+function callSample(): void
+{
+    $formattedParent = AccountLabelsServiceClient::accountName('[ACCOUNT]');
+
+    list_account_labels_sample($formattedParent);
 }
 // [END css_v1_generated_AccountLabelsService_ListAccountLabels_sync]

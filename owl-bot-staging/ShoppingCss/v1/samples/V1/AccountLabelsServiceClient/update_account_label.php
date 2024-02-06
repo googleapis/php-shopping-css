@@ -43,7 +43,9 @@ function update_account_label_sample(): void
     $accountLabelsServiceClient = new AccountLabelsServiceClient();
 
     // Prepare the request message.
-    $request = new UpdateAccountLabelRequest();
+    $accountLabel = new AccountLabel();
+    $request = (new UpdateAccountLabelRequest())
+        ->setAccountLabel($accountLabel);
 
     // Call the API and handle any network failures.
     try {

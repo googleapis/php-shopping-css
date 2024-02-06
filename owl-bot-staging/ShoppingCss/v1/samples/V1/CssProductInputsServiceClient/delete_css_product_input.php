@@ -33,19 +33,18 @@ use Google\Shopping\Css\V1\DeleteCssProductInputRequest;
  * After a delete it may take several minutes until the input is no longer
  * available.
  *
- * This sample has been automatically generated and should be regarded as a code
- * template only. It will require modifications to work:
- *  - It may require correct/in-range values for request initialization.
- *  - It may require specifying regional endpoints when creating the service client,
- *    please see the apiEndpoint client configuration option for more details.
+ * @param string $formattedName The name of the CSS product input resource to delete.
+ *                              Format: accounts/{account}/cssProductInputs/{css_product_input}
+ *                              Please see {@see CssProductInputsServiceClient::cssProductInputName()} for help formatting this field.
  */
-function delete_css_product_input_sample(): void
+function delete_css_product_input_sample(string $formattedName): void
 {
     // Create a client.
     $cssProductInputsServiceClient = new CssProductInputsServiceClient();
 
     // Prepare the request message.
-    $request = new DeleteCssProductInputRequest();
+    $request = (new DeleteCssProductInputRequest())
+        ->setName($formattedName);
 
     // Call the API and handle any network failures.
     try {
@@ -54,5 +53,24 @@ function delete_css_product_input_sample(): void
     } catch (ApiException $ex) {
         printf('Call failed with message: %s' . PHP_EOL, $ex->getMessage());
     }
+}
+
+/**
+ * Helper to execute the sample.
+ *
+ * This sample has been automatically generated and should be regarded as a code
+ * template only. It will require modifications to work:
+ *  - It may require correct/in-range values for request initialization.
+ *  - It may require specifying regional endpoints when creating the service client,
+ *    please see the apiEndpoint client configuration option for more details.
+ */
+function callSample(): void
+{
+    $formattedName = CssProductInputsServiceClient::cssProductInputName(
+        '[ACCOUNT]',
+        '[CSS_PRODUCT_INPUT]'
+    );
+
+    delete_css_product_input_sample($formattedName);
 }
 // [END css_v1_generated_CssProductInputsService_DeleteCssProductInput_sync]

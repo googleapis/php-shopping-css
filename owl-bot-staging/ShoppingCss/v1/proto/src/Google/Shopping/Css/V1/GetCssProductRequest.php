@@ -23,7 +23,8 @@ class GetCssProductRequest extends \Google\Protobuf\Internal\Message
     protected $name = '';
 
     /**
-     * @param string $name Required. The name of the CSS product to retrieve.
+     * @param string $name Required. The name of the CSS product to retrieve. Please see
+     *                     {@see CssProductsServiceClient::cssProductName()} for help formatting this field.
      *
      * @return \Google\Shopping\Css\V1\GetCssProductRequest
      *

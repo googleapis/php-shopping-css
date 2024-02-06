@@ -86,7 +86,12 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $expectedResponse->setDisplayName($displayName);
         $expectedResponse->setDescription($description);
         $transport->addResponse($expectedResponse);
-        $request = new CreateAccountLabelRequest();
+        // Mock request
+        $formattedParent = $gapicClient->accountName('[ACCOUNT]');
+        $accountLabel = new AccountLabel();
+        $request = (new CreateAccountLabelRequest())
+            ->setParent($formattedParent)
+            ->setAccountLabel($accountLabel);
         $response = $gapicClient->createAccountLabel($request);
         $this->assertEquals($expectedResponse, $response);
         $actualRequests = $transport->popReceivedCalls();
@@ -94,6 +99,10 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.AccountLabelsService/CreateAccountLabel', $actualFuncCall);
+        $actualValue = $actualRequestObject->getParent();
+        $this->assertProtobufEquals($formattedParent, $actualValue);
+        $actualValue = $actualRequestObject->getAccountLabel();
+        $this->assertProtobufEquals($accountLabel, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -115,7 +124,12 @@ class AccountLabelsServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new CreateAccountLabelRequest();
+        // Mock request
+        $formattedParent = $gapicClient->accountName('[ACCOUNT]');
+        $accountLabel = new AccountLabel();
+        $request = (new CreateAccountLabelRequest())
+            ->setParent($formattedParent)
+            ->setAccountLabel($accountLabel);
         try {
             $gapicClient->createAccountLabel($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -140,13 +154,18 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         // Mock response
         $expectedResponse = new GPBEmpty();
         $transport->addResponse($expectedResponse);
-        $request = new DeleteAccountLabelRequest();
+        // Mock request
+        $formattedName = $gapicClient->accountLabelName('[ACCOUNT]', '[LABEL]');
+        $request = (new DeleteAccountLabelRequest())
+            ->setName($formattedName);
         $gapicClient->deleteAccountLabel($request);
         $actualRequests = $transport->popReceivedCalls();
         $this->assertSame(1, count($actualRequests));
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.AccountLabelsService/DeleteAccountLabel', $actualFuncCall);
+        $actualValue = $actualRequestObject->getName();
+        $this->assertProtobufEquals($formattedName, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -168,7 +187,10 @@ class AccountLabelsServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new DeleteAccountLabelRequest();
+        // Mock request
+        $formattedName = $gapicClient->accountLabelName('[ACCOUNT]', '[LABEL]');
+        $request = (new DeleteAccountLabelRequest())
+            ->setName($formattedName);
         try {
             $gapicClient->deleteAccountLabel($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -200,7 +222,10 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $expectedResponse->setNextPageToken($nextPageToken);
         $expectedResponse->setAccountLabels($accountLabels);
         $transport->addResponse($expectedResponse);
-        $request = new ListAccountLabelsRequest();
+        // Mock request
+        $formattedParent = $gapicClient->accountName('[ACCOUNT]');
+        $request = (new ListAccountLabelsRequest())
+            ->setParent($formattedParent);
         $response = $gapicClient->listAccountLabels($request);
         $this->assertEquals($expectedResponse, $response->getPage()->getResponseObject());
         $resources = iterator_to_array($response->iterateAllElements());
@@ -211,6 +236,8 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.AccountLabelsService/ListAccountLabels', $actualFuncCall);
+        $actualValue = $actualRequestObject->getParent();
+        $this->assertProtobufEquals($formattedParent, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -232,7 +259,10 @@ class AccountLabelsServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new ListAccountLabelsRequest();
+        // Mock request
+        $formattedParent = $gapicClient->accountName('[ACCOUNT]');
+        $request = (new ListAccountLabelsRequest())
+            ->setParent($formattedParent);
         try {
             $gapicClient->listAccountLabels($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -267,7 +297,10 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $expectedResponse->setDisplayName($displayName);
         $expectedResponse->setDescription($description);
         $transport->addResponse($expectedResponse);
-        $request = new UpdateAccountLabelRequest();
+        // Mock request
+        $accountLabel = new AccountLabel();
+        $request = (new UpdateAccountLabelRequest())
+            ->setAccountLabel($accountLabel);
         $response = $gapicClient->updateAccountLabel($request);
         $this->assertEquals($expectedResponse, $response);
         $actualRequests = $transport->popReceivedCalls();
@@ -275,6 +308,8 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.AccountLabelsService/UpdateAccountLabel', $actualFuncCall);
+        $actualValue = $actualRequestObject->getAccountLabel();
+        $this->assertProtobufEquals($accountLabel, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -296,7 +331,10 @@ class AccountLabelsServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new UpdateAccountLabelRequest();
+        // Mock request
+        $accountLabel = new AccountLabel();
+        $request = (new UpdateAccountLabelRequest())
+            ->setAccountLabel($accountLabel);
         try {
             $gapicClient->updateAccountLabel($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -331,7 +369,12 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $expectedResponse->setDisplayName($displayName);
         $expectedResponse->setDescription($description);
         $transport->addResponse($expectedResponse);
-        $request = new CreateAccountLabelRequest();
+        // Mock request
+        $formattedParent = $gapicClient->accountName('[ACCOUNT]');
+        $accountLabel = new AccountLabel();
+        $request = (new CreateAccountLabelRequest())
+            ->setParent($formattedParent)
+            ->setAccountLabel($accountLabel);
         $response = $gapicClient->createAccountLabelAsync($request)->wait();
         $this->assertEquals($expectedResponse, $response);
         $actualRequests = $transport->popReceivedCalls();
@@ -339,6 +382,10 @@ class AccountLabelsServiceClientTest extends GeneratedTest
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.AccountLabelsService/CreateAccountLabel', $actualFuncCall);
+        $actualValue = $actualRequestObject->getParent();
+        $this->assertProtobufEquals($formattedParent, $actualValue);
+        $actualValue = $actualRequestObject->getAccountLabel();
+        $this->assertProtobufEquals($accountLabel, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 }

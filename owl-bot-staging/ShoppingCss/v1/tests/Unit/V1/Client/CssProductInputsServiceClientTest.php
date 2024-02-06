@@ -73,13 +73,18 @@ class CssProductInputsServiceClientTest extends GeneratedTest
         // Mock response
         $expectedResponse = new GPBEmpty();
         $transport->addResponse($expectedResponse);
-        $request = new DeleteCssProductInputRequest();
+        // Mock request
+        $formattedName = $gapicClient->cssProductInputName('[ACCOUNT]', '[CSS_PRODUCT_INPUT]');
+        $request = (new DeleteCssProductInputRequest())
+            ->setName($formattedName);
         $gapicClient->deleteCssProductInput($request);
         $actualRequests = $transport->popReceivedCalls();
         $this->assertSame(1, count($actualRequests));
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.CssProductInputsService/DeleteCssProductInput', $actualFuncCall);
+        $actualValue = $actualRequestObject->getName();
+        $this->assertProtobufEquals($formattedName, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -101,7 +106,10 @@ class CssProductInputsServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new DeleteCssProductInputRequest();
+        // Mock request
+        $formattedName = $gapicClient->cssProductInputName('[ACCOUNT]', '[CSS_PRODUCT_INPUT]');
+        $request = (new DeleteCssProductInputRequest())
+            ->setName($formattedName);
         try {
             $gapicClient->deleteCssProductInput($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -136,7 +144,20 @@ class CssProductInputsServiceClientTest extends GeneratedTest
         $expectedResponse->setContentLanguage($contentLanguage);
         $expectedResponse->setFeedLabel($feedLabel);
         $transport->addResponse($expectedResponse);
-        $request = new InsertCssProductInputRequest();
+        // Mock request
+        $formattedParent = $gapicClient->accountName('[ACCOUNT]');
+        $cssProductInput = new CssProductInput();
+        $cssProductInputRawProvidedId = 'cssProductInputRawProvidedId1424807816';
+        $cssProductInput->setRawProvidedId($cssProductInputRawProvidedId);
+        $cssProductInputContentLanguage = 'cssProductInputContentLanguage-1783585453';
+        $cssProductInput->setContentLanguage($cssProductInputContentLanguage);
+        $cssProductInputFeedLabel = 'cssProductInputFeedLabel664498136';
+        $cssProductInput->setFeedLabel($cssProductInputFeedLabel);
+        $feedId = 976011428;
+        $request = (new InsertCssProductInputRequest())
+            ->setParent($formattedParent)
+            ->setCssProductInput($cssProductInput)
+            ->setFeedId($feedId);
         $response = $gapicClient->insertCssProductInput($request);
         $this->assertEquals($expectedResponse, $response);
         $actualRequests = $transport->popReceivedCalls();
@@ -144,6 +165,12 @@ class CssProductInputsServiceClientTest extends GeneratedTest
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.CssProductInputsService/InsertCssProductInput', $actualFuncCall);
+        $actualValue = $actualRequestObject->getParent();
+        $this->assertProtobufEquals($formattedParent, $actualValue);
+        $actualValue = $actualRequestObject->getCssProductInput();
+        $this->assertProtobufEquals($cssProductInput, $actualValue);
+        $actualValue = $actualRequestObject->getFeedId();
+        $this->assertProtobufEquals($feedId, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 
@@ -165,7 +192,20 @@ class CssProductInputsServiceClientTest extends GeneratedTest
             'details' => [],
         ], JSON_PRETTY_PRINT);
         $transport->addResponse(null, $status);
-        $request = new InsertCssProductInputRequest();
+        // Mock request
+        $formattedParent = $gapicClient->accountName('[ACCOUNT]');
+        $cssProductInput = new CssProductInput();
+        $cssProductInputRawProvidedId = 'cssProductInputRawProvidedId1424807816';
+        $cssProductInput->setRawProvidedId($cssProductInputRawProvidedId);
+        $cssProductInputContentLanguage = 'cssProductInputContentLanguage-1783585453';
+        $cssProductInput->setContentLanguage($cssProductInputContentLanguage);
+        $cssProductInputFeedLabel = 'cssProductInputFeedLabel664498136';
+        $cssProductInput->setFeedLabel($cssProductInputFeedLabel);
+        $feedId = 976011428;
+        $request = (new InsertCssProductInputRequest())
+            ->setParent($formattedParent)
+            ->setCssProductInput($cssProductInput)
+            ->setFeedId($feedId);
         try {
             $gapicClient->insertCssProductInput($request);
             // If the $gapicClient method call did not throw, fail the test
@@ -190,13 +230,18 @@ class CssProductInputsServiceClientTest extends GeneratedTest
         // Mock response
         $expectedResponse = new GPBEmpty();
         $transport->addResponse($expectedResponse);
-        $request = new DeleteCssProductInputRequest();
+        // Mock request
+        $formattedName = $gapicClient->cssProductInputName('[ACCOUNT]', '[CSS_PRODUCT_INPUT]');
+        $request = (new DeleteCssProductInputRequest())
+            ->setName($formattedName);
         $gapicClient->deleteCssProductInputAsync($request)->wait();
         $actualRequests = $transport->popReceivedCalls();
         $this->assertSame(1, count($actualRequests));
         $actualFuncCall = $actualRequests[0]->getFuncCall();
         $actualRequestObject = $actualRequests[0]->getRequestObject();
         $this->assertSame('/google.shopping.css.v1.CssProductInputsService/DeleteCssProductInput', $actualFuncCall);
+        $actualValue = $actualRequestObject->getName();
+        $this->assertProtobufEquals($formattedName, $actualValue);
         $this->assertTrue($transport->isExhausted());
     }
 }
